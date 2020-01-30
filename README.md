@@ -1,4 +1,4 @@
-# eSNN in C++
+# Exploring the basic properties of eSNN in C++
 Evolving spiking neural network in C++
 
 ## My works:
