@@ -11,3 +11,8 @@ Evolving spiking neural network in C++
 
 ## Notes:
 * syn w/ ~/Desktop/ubuntu_one/test01/eSNN_cplusplus
+* To compile w/ Cmake,
+<br> mkdir build
+cd build
+cmake ..
+make
