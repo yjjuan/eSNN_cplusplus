@@ -1,6 +1,6 @@
 #include <iostream>
 #include "eSNN.h"
-#include <windows.h>
+//#include <windows.h>
 
 
 using namespace std;
@@ -8,7 +8,7 @@ using namespace std;
 //Read all data files in a given directory
 void ReadDirectory(const std::string &name, vector<string> &v) {
     std::string pattern(name);
-    pattern.append("\\*");
+    pattern.append("/*");
     WIN32_FIND_DATA data;
     HANDLE hFind;
     if ((hFind = FindFirstFile(pattern.c_str(), &data)) != INVALID_HANDLE_VALUE) {
@@ -31,7 +31,7 @@ int main() {
     //comment or uncoment lines 31-63 base on benchmark you want to test
 
     string path = "./datasets/NAB";
-    string resultsPath = "./models_zoo";
+    string resultsPath = "./models_zoo/NAB";
     vector<string> folders = {
             "artificialNoAnomaly",
            "artificialWithAnomaly",
@@ -173,7 +173,7 @@ int main() {
         cout << "Precision overall " << precisionOverall << " Recall overall " << recallOverall << " fMeasure overall "
              << fMeasureOverall << endl;
 
-        string metricsFilePath = resultsPath + "\\" + folder + "\\" +
+        string metricsFilePath = resultsPath + "/" + folder + "/" +
                                  "metr_Overall_Optimal_" + folder;
         SaveMetricsOverall(metricsFilePath, precisionOverall, recallOverall,
                            fMeasureOverall);

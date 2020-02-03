@@ -9,3 +9,7 @@ datasets
 # Trained models
 models_zoo
 
+#cmake
+build
+cmake-3.15.2.tar.gz
+cmake-3.15.2
