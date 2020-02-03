@@ -29,13 +29,11 @@ int main() {
 
 
     //comment or uncoment lines 31-63 base on benchmark you want to test
-
+/*
     string path = "F:\\artykuly\\Anomaly detection eSNN\\Software\\eSNN-RTAD"
                   "\\Datasets\\numenta\\";
-
     string resultsPath = "F:\\artykuly\\Anomaly detection eSNN\\Software\\eSNN-RTAD"
                          "\\Results\\numenta_fMeasure_optimization\\";
-
     vector<string> folders = {
             "artificialNoAnomaly",
            "artificialWithAnomaly",
@@ -45,9 +43,8 @@ int main() {
             "realTraffic",
             "realTweets"
     };
+*/
 
-
-/*
     string path = "F:\\artykuly\\Anomaly detection eSNN\\Software\\eSNN-RTAD"
                   "\\Datasets\\Yahoo\\";
     string resultsPath = "F:\\artykuly\\Anomaly detection eSNN\\Software\\eSNN-RTAD"
@@ -58,7 +55,7 @@ int main() {
             "A3Benchmark",
             "A4Benchmark",
     };
-*/
+
 
     for (int j = 0; j < folders.size(); j++) {
         string folder = folders[j];
@@ -70,7 +67,7 @@ int main() {
         
 
         //below set parameters for the selected benchmark
-  //Numenta benchmark parameters set
+/*  //Numenta benchmark parameters set
         double NOsize_b = 50, NOsize_e = 50, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
         double Wsize_b = 100, Wsize_e = 600, Wsize_s = 100;
         double NIsize_b = 10, NIsize_e = 10, NIsize_s = 20;
@@ -81,9 +78,9 @@ int main() {
         double C_b = 0.6, C_e = 0.6, C_s = 0.1;
         double ErrorFactor_b = 0.9, ErrorFactor_e = 0.9, ErrorFactor_s = 0.1;
         double AnomalyFactor_b = 2, AnomalyFactor_e = 7, AnomalyFactor_s = 1;
+*/
 
-
-/*    //Yahoo benchmark parameters set
+    //Yahoo benchmark parameters set
        double NOsize_b = 50, NOsize_e = 50, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
         double Wsize_b = 20, Wsize_e = 500, Wsize_s = 20;
         double NIsize_b = 10, NIsize_e = 10, NIsize_s = 20;
@@ -94,7 +91,7 @@ int main() {
         double C_b = 0.8, C_e = 0.8, C_s = 0.1;
         double ErrorFactor_b = 0.9, ErrorFactor_e = 0.9, ErrorFactor_s = 0.1;
         double AnomalyFactor_b = 2, AnomalyFactor_e = 17, AnomalyFactor_s = 1;
-*/
+
         vector<double> dataFile_Precision, dataFile_Recall, dataFile_FMeasure, dataFile_AUC;
 
         for (int i = 2; i < files.size(); i++) {
