@@ -1,0 +1,11 @@
+# Jupyter Notebook
+.ipynb_checkpoints
+*/__pycache__
+__pycache__
+
+# Dataset
+datasets
+
+# Trained models
+models_zoo
+
