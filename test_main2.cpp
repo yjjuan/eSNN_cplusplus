@@ -126,14 +126,16 @@ int main() {
                                                 for (double AnomalyFactor_c = AnomalyFactor_b;
                                                      AnomalyFactor_c <= AnomalyFactor_e;
                                                      AnomalyFactor_c += AnomalyFactor_s) {
-
+                                                  
+                                                    cout << "Start to set hyperparameters!" << endl;
                                                     NOsize = NOsize_c, Wsize = Wsize_c, NIsize = NIsize_c, Beta = Beta_c,
                                                     TS = TS_c, sim = sim_c, mod = mod_c, C = C_c, ErrorFactor = ErrorFactor_c,
                                                     AnomalyFactor = AnomalyFactor_c;
-
+                                                  
+                                                    cout << "Start to load data!" << endl;
                                                     //LoadData(dirPath + "/" + files[i]); //load dataset
                                                     LoadData(files[i]); //load dataset
-
+                                                    cout << "Start to train!" << endl;
                                                     TraineSNN(); //train eSNN with given set of parameters
                                                     cout << "Finish training!" << endl;
 
