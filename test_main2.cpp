@@ -43,16 +43,10 @@ int main() {
 
 
     //comment or uncoment lines 31-63 base on benchmark you want to test
-
-    string path = "./datasets/NAB/data";
+    // Numenta(NAB) dataset
+    string path = "./datasets/test_NAB";
     string resultsPath = "./models_zoo/NAB";
     vector<string> folders = {
-            "artificialNoAnomaly",
-           "artificialWithAnomaly",
-            "realAdExchange",
-            "realAWSCloudwatch",
-            "realKnownCause",
-            "realTraffic",
             "realTweets"
     };
 
@@ -71,13 +65,17 @@ int main() {
 
     for (int j = 0; j < folders.size(); j++) {
         string folder = folders[j];
-
+        cout << folder << endl;
         string dirPath = path + "/" + folder;
         //vector<string> files;
         vector<string> files = globVector(dirPath);
 
         //ReadDirectory(dirPath, files); //load all datafiles from a directory
-        
+        for (int k=0; k<files.size(); k++){
+          
+            cout << files[k] <<endl;
+            
+            }
 
         //below set parameters for the selected benchmark
   //Numenta benchmark parameters set
@@ -107,14 +105,14 @@ int main() {
 */
         vector<double> dataFile_Precision, dataFile_Recall, dataFile_FMeasure, dataFile_AUC;
 
-        for (int i = 2; i < files.size(); i++) {
+        for (int i = 0; i < files.size(); i++) {
 
             double maxFMeasure = 0.0, maxPrecision = 0.0, maxRecall = 0.0;
             double threshold = 0.0;
 
             cout << "#####################################################################" << endl;
-            cout << folder << "/" << files[i] << endl;
-
+            //cout << folder << "/" << files[i] << endl;
+            //cout << files[i] << endl;
             for (double NOsize_c = NOsize_b; NOsize_c <= NOsize_e; NOsize_c += NOsize_s) {
                 for (double Wsize_c = Wsize_b; Wsize_c <= Wsize_e; Wsize_c += Wsize_s) {
                     for (double NIsize_c = NIsize_b; NIsize_c <= NIsize_e; NIsize_c += NIsize_s) {
@@ -133,16 +131,19 @@ int main() {
                                                     TS = TS_c, sim = sim_c, mod = mod_c, C = C_c, ErrorFactor = ErrorFactor_c,
                                                     AnomalyFactor = AnomalyFactor_c;
 
-                                                    LoadData(dirPath + "\\" + files[i]); //load dataset
+                                                    //LoadData(dirPath + "/" + files[i]); //load dataset
+                                                    LoadData(files[i]); //load dataset
 
                                                     TraineSNN(); //train eSNN with given set of parameters
+                                                    cout << "Finish training!" << endl;
 
                                                     CalculateConfusionMatrix(); //calculate confusion Matrix
                                                     double precision = CalculatePrecision(); //calculate statistics
                                                     double recall = CalculateRecall();
                                                     double fMeasure = CalculateF_Measure(precision, recall);
 
-
+                                                    //PrintActualParameters()
+                                                      
                                                     if (fMeasure >
                                                         threshold) { //rember parametrs for mzx mean FMeasure
                                                         threshold = fMeasure;
@@ -151,11 +152,11 @@ int main() {
                                                         maxRecall = recall;
 
                                                         string resultsFilePath =
-                                                                resultsPath + "\\" + folder + "\\" + folder + "_" +
+                                                                resultsPath + "/" + folder + "/" + folder + "_" +
                                                                 files[i];
                                                         SaveResults(resultsFilePath);
                                                         string metricsFilePath =
-                                                                resultsPath + "\\" + folder + "\\" + "metr_" + folder +
+                                                                resultsPath + "/" + folder + "/" + "metr_" + folder +
                                                                 "_" + files[i];
                                                         SaveMetrics(metricsFilePath, precision,
                                                                     recall, fMeasure, 0);
