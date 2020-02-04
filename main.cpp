@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/*
 //Read all data files in a given directory
 void ReadDirectory(const std::string &name, vector<string> &v) {
     std::string pattern(name);
@@ -18,6 +19,18 @@ void ReadDirectory(const std::string &name, vector<string> &v) {
         } while (FindNextFile(hFind, &data) != 0);
         FindClose(hFind);
     }
+}
+*/
+//Read all filenames in a given directory (Linux-based)
+vector<string> globVector(const string& pattern){
+    glob_t glob_result;
+    glob(pattern.c_str(),GLOB_TILDE,NULL,&glob_result);
+    vector<string> files;
+    for(unsigned int i=0;i<glob_result.gl_pathc;++i){
+        files.push_back(string(glob_result.gl_pathv[i]));
+    }
+    globfree(&glob_result);
+    return files;
 }
 
 void PrintActualParameters() {
@@ -59,10 +72,11 @@ int main() {
     for (int j = 0; j < folders.size(); j++) {
         string folder = folders[j];
 
-        string dirPath = path + "\\" + folder;
-        vector<string> files;
+        string dirPath = path + "/" + folder;
+        //vector<string> files;
+        vector<string> files = globVector(dirPath);
 
-        ReadDirectory(dirPath, files); //load all datafiles from a directory
+        //ReadDirectory(dirPath, files); //load all datafiles from a directory
         
 
         //below set parameters for the selected benchmark

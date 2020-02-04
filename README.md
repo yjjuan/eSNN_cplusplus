@@ -7,7 +7,7 @@ Evolving spiking neural network in C++
 * Embed the SNN into running app: detection the drift of my velocity.
 
 ## Milestones:
-* 
+* 20200203: I have to turn window-based ReadDirectory into Linux-based one
 
 ## Notes:
 * syn w/ ~/Desktop/ubuntu_one/test01/eSNN_cplusplus
