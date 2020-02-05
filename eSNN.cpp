@@ -318,8 +318,8 @@ void TraineSNN() { //main eSNN procedure
     //cout << "Enter the last for-loop" << endl;
     for (int t = Wsize; t < X.size(); t++) {
     //for (int t = Wsize; t < 103; t++) {
-        cout << t << endl;
-        cout << X.size() << endl;
+        //cout << t << endl;
+        //cout << X.size() << endl;
         Window.erase(Window.begin());
         Window.push_back(X[t].value);
 
