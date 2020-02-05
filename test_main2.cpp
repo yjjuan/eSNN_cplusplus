@@ -128,7 +128,7 @@ int main() {
                                                      AnomalyFactor_c += AnomalyFactor_s) {
                                                   
                                                     cout << "Start to set hyperparameters!" << endl;
-                                                    cout << "AnomalyFactor=" << AnomalyFactor_c << endl;
+                                                    //cout << "AnomalyFactor=" << AnomalyFactor_c << endl;
                                                     NOsize = NOsize_c, Wsize = Wsize_c, NIsize = NIsize_c, Beta = Beta_c,
                                                     TS = TS_c, sim = sim_c, mod = mod_c, C = C_c, ErrorFactor = ErrorFactor_c,
                                                     AnomalyFactor = AnomalyFactor_c;
