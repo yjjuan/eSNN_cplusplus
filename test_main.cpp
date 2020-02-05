@@ -7,6 +7,8 @@
 //using std::vector;
 using namespace std;
 
+
+
 vector<string> globVector(const string& pattern){
     glob_t glob_result;
     glob(pattern.c_str(),GLOB_TILDE,NULL,&glob_result);
@@ -43,10 +45,10 @@ int CountInstances(string fileName) {
     return numInstances;
 }
 
-void LoadData(string fileName) {
+void LoadData(string fileName, vector<inputValue> &X) {
     fstream handler;
 
-    datasetSize = CountInstances(fileName); // zlicz l. instancji w pliku
+    int datasetSize = CountInstances(fileName); // zlicz l. instancji w pliku
 
     handler.open(fileName);
     for (int i = 0; i < datasetSize; i++) {
@@ -59,8 +61,10 @@ void LoadData(string fileName) {
             getline(linestream, dataPortion, ',');
             string timeStamp = dataPortion;
             getline(linestream, dataPortion, ',');
+            //cout << "dataPortion:" << dataPortion << endl;
             double value = stod(dataPortion);
             getline(linestream, dataPortion, ' ');
+            cout << "dataPortion:" << dataPortion << endl;
             int r_label = stoi(dataPortion);
 
             inputValue newValue = {timeStamp, value, (r_label == 0 ? false : true)};
@@ -72,12 +76,15 @@ void LoadData(string fileName) {
 }
 
 int main() {
-  extern vector<inputValue> X;
-    
-  vector<string> files = globVector("./datasets/NAB/data/artificialNoAnomaly/*");
-  //cout<<files<<endl;
+  
+  vector<inputValue> X;
+  
+  vector<string> files = globVector("./datasets/test_NAB/realTweets/*");
+  cout<<files[0]<<endl;
+  /*
   for(int i=0; i<files.size(); ++i){
     std::cout << files[i] <<endl;
   }
-  LoadData(files[0]);
+  */
+  LoadData(files[0], X);
 }

@@ -139,10 +139,12 @@ void UpdateNeuron(neuron *n_i, neuron *n_s) { //Update neuron n_s in output repo
     for (int j = 0; j < n_s->s_weights.size(); j++) {
         n_s->s_weights[j] = (n_i->s_weights[j] + n_i->s_weights[j] * n_s->M) / (n_s->M + 1);
     }
+    cout << "Before update:" << n_i->M << endl;
     n_s->gamma = (n_i->gamma + n_s->gamma * n_s->M) / (n_s->M + 1);
     n_s->outputValue = (n_i->outputValue + n_s->outputValue * n_s->M) / (n_s->M + 1);
     n_s->additionTime = (n_i->additionTime + n_s->additionTime * n_s->M) / (n_s->M + 1);
     n_s->M += 1;
+    cout << "After update:" << n_i->M << endl;
     delete n_i;
 }
 
@@ -187,7 +189,7 @@ CalculateDistance(const vector<double> &v1, const vector<double> &v2) { //calcul
 neuron *FindMostSimilar(neuron *n_i) { //find mos similar neurons in terms of synaptic weights
     double minDist = CalculateDistance(n_i->s_weights, OutputNeurons[0]->s_weights);
     double minIdx = 0;
-
+    //cout << "output neuron:" << OutputNeurons[minIdx]->M << endl;
     if (OutputNeurons.size() > 1) {
         for (int k = 1; k < OutputNeurons.size(); k++) {
             double dist = CalculateDistance(n_i->s_weights, OutputNeurons[k]->s_weights);
@@ -197,6 +199,8 @@ neuron *FindMostSimilar(neuron *n_i) { //find mos similar neurons in terms of sy
             }
         }
     }
+    cout << "Size of output neurons:" << OutputNeurons.size() << endl;
+    cout << "output neuron:" << OutputNeurons[minIdx]->M << endl;
     return OutputNeurons[minIdx];
 }
 
@@ -310,9 +314,10 @@ void TraineSNN() { //main eSNN procedure
     for (int k = 0; k < Wsize; k++)
         U.push_back(false);
 
-
+    //cout << "Enter the last for-loop" << endl;
     for (int t = Wsize; t < X.size(); t++) {
-
+        cout << t << endl;
+        cout << X.size() << endl;
         Window.erase(Window.begin());
         Window.push_back(X[t].value);
 
@@ -322,23 +327,27 @@ void TraineSNN() { //main eSNN procedure
 
         neuron *n_i = new neuron;
         InitializeNeuron(n_i, Window);
-
+        cout << "n_i after init: " << n_i->M <<endl;
 
         neuron *n_s;
         if (CNOsize > 0) {
+            cout << "First Block" << endl;
             n_s = FindMostSimilar(n_i);
+            cout << "n_s" << n_s->M << endl;
         }
 
 
         if (CNOsize > 0 && CalculateDistance(n_i->s_weights, n_s->s_weights) <= sim*Dmax) {
+            cout << "Block1" << endl;
             UpdateNeuron(n_i, n_s);
         } else if (CNOsize < NOsize) {
+            cout << "Block2" << endl;
             OutputNeurons.push_back(n_i);
             CNOsize++;
         } else {
             ReplaceOldest(n_i);
         }
-
+        cout << "Finish first part of training" << endl;
 
         ///////////////////////////////
 
@@ -358,7 +367,7 @@ void TraineSNN() { //main eSNN procedure
         if (u_t_1 == false) {
             ErrorCorrection(n_f, x_t_1);
         }
-
+        cout << "Finish Second part of training" << endl;
     }
 }
 
@@ -447,6 +456,7 @@ void LoadData(string fileName) {
             getline(linestream, dataPortion, ',');
             string timeStamp = dataPortion;
             getline(linestream, dataPortion, ',');
+            //cout << "dataPortion:" << dataPortion << endl;
             double value = stod(dataPortion);
             getline(linestream, dataPortion, ' ');
             int r_label = stoi(dataPortion);

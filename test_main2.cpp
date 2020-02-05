@@ -66,7 +66,7 @@ int main() {
     for (int j = 0; j < folders.size(); j++) {
         string folder = folders[j];
         cout << folder << endl;
-        string dirPath = path + "/" + folder;
+        string dirPath = path + "/" + folder + "/*";
         //vector<string> files;
         vector<string> files = globVector(dirPath);
 
@@ -112,7 +112,7 @@ int main() {
 
             cout << "#####################################################################" << endl;
             //cout << folder << "/" << files[i] << endl;
-            //cout << files[i] << endl;
+            cout << files[i] << endl;
             for (double NOsize_c = NOsize_b; NOsize_c <= NOsize_e; NOsize_c += NOsize_s) {
                 for (double Wsize_c = Wsize_b; Wsize_c <= Wsize_e; Wsize_c += Wsize_s) {
                     for (double NIsize_c = NIsize_b; NIsize_c <= NIsize_e; NIsize_c += NIsize_s) {
