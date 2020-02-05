@@ -16,6 +16,7 @@ Evolving spiking neural network in C++
 cd build
 cmake ..
 make
+* compile the main.cpp: g++ test_main2.cpp eSNN.cpp -o test_main2 -std=c++14
 
 ## Sources
 * SNN in Pytorch [Link](https://medium.com/@martino.sorbaro/deep-learning-with-spiking-networks-optimising-energy-consumption-50588b4435fd); [Gitlab](https://gitlab.com/aiCTX/synoploss)
