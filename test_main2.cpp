@@ -88,8 +88,7 @@ int main() {
         double mod_b = 0.6, mod_e = 0.6, mod_s = 0.1;
         double C_b = 0.6, C_e = 0.6, C_s = 0.1;
         double ErrorFactor_b = 0.9, ErrorFactor_e = 0.9, ErrorFactor_s = 0.1;
-        //double AnomalyFactor_b = 2, AnomalyFactor_e = 7, AnomalyFactor_s = 1;
-        double AnomalyFactor_b = 3, AnomalyFactor_e = 7, AnomalyFactor_s = 1;
+        double AnomalyFactor_b = 2, AnomalyFactor_e = 7, AnomalyFactor_s = 1;
 
 /*    //Yahoo benchmark parameters set
        double NOsize_b = 50, NOsize_e = 50, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
