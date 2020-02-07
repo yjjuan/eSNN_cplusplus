@@ -79,7 +79,7 @@ int main() {
 
         //below set parameters for the selected benchmark
   //Numenta benchmark parameters set
-        double NOsize_b = 50, NOsize_e = 50, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
+        double NOsize_b = 50, NOsize_e = 100, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
         double Wsize_b = 100, Wsize_e = 600, Wsize_s = 100;
         double NIsize_b = 10, NIsize_e = 10, NIsize_s = 20;
         double Beta_b = 1.0, Beta_e = 1.0, Beta_s = 0.2;

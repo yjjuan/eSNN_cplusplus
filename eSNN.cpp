@@ -176,8 +176,7 @@ bool ClassifyAnomaly(double x, double y) { //anomaly classification function
     return (E[E.size() - 1] - avgE) > AnomalyFactor * stdE;
 }
 
-double
-CalculateDistance(const vector<double> &v1, const vector<double> &v2) { //calculate distance between two weights vectors
+double CalculateDistance(const vector<double> &v1, const vector<double> &v2) { //calculate distance between two weights vectors
     double diffSq = 0.0;
 
     for (int j = 0; j < v1.size(); j++) {
@@ -328,7 +327,9 @@ void TraineSNN() { //main eSNN procedure
         CalculateSpikeOrder(Window);
 
         neuron *n_i = new neuron;
-        cout << "n_i before init: " << n_i->M <<endl;
+        //cout << "n_i before init: " << n_i->M <<endl;
+        
+        // Skip the neurn w/ attribute = nan
         if (isnan(n_i->M)){
           continue;
         }
@@ -373,7 +374,6 @@ void TraineSNN() { //main eSNN procedure
         if (u_t_1 == false) {
             ErrorCorrection(n_f, x_t_1);
         }
-        //cout << "Finish Second part of training" << endl;
     }
 }
 
