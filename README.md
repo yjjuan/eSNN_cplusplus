@@ -2,6 +2,7 @@
 Evolving spiking neural network in C++
 
 ## My works:
+* Apply OeSNN to data stream of two consecutive bearing
 * Explore how different hyperparameters of SNN affect performance of SNN for anomaly detection. (in c++ jupyter notebook)
   * how many hyperparameters are there in eSNN?
 * Embed the SNN into running app: detection the drift of my velocity.
