@@ -24,3 +24,4 @@ make
 
 ## Reference:
 * [Easy Outlier Detection in Data Streams](https://towardsdatascience.com/easy-outlier-detection-in-data-streams-3089bfefe528)
+* [Medium post: Detecting real-time and unsupervised anomalies in streaming data: a starting point](https://towardsdatascience.com/detecting-real-time-and-unsupervised-anomalies-in-streaming-data-a-starting-point-760a4bacbdf8)
