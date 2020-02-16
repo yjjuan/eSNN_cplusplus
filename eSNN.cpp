@@ -371,6 +371,7 @@ void TraineSNN() { //main eSNN procedure
         bool u_t_1 = ClassifyAnomaly(x_t_1, y_t_1);
 
         U.push_back(u_t_1);
+        //cout << "Prediction of eSNN = " << u_t_1 <<endl; 
         if (u_t_1 == false) {
             ErrorCorrection(n_f, x_t_1);
         }

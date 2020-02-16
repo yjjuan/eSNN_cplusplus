@@ -3,6 +3,7 @@
 //#include <windows.h>
 //#include <boost/filesystem.hpp>
 #include <glob.h>
+#include <string.h>
 
 using namespace std;
 
@@ -33,6 +34,25 @@ vector<string> globVector(const string& pattern){
     return files;
 }
 
+vector<string> split(const string& str, const string& delim) {
+    vector<string> res;
+    if("" == str) return res;
+    //先将要切割的字符串从string类型转换为char*类型
+    char * strs = new char[str.length() + 1] ; //不要忘了
+    strcpy(strs, str.c_str()); 
+ 
+    char * d = new char[delim.length() + 1];
+    strcpy(d, delim.c_str());
+ 
+    char *p = strtok(strs, d);
+    while(p) {
+        string s = p; //分割得到的字符串转换为string类型
+        res.push_back(s); //存入结果数组
+        p = strtok(NULL, d);
+    }
+    return res;
+}
+  
 void PrintActualParameters() {
     cout << "Actual: NOsize: " << NOsize << " Wsize: " << Wsize << " NIsize: " << NIsize;
     cout << " Beta: " << Beta << " TS: " << TS << " sim: " << sim << " mod: " << mod << " C: " << C;
@@ -79,9 +99,9 @@ int main() {
 
         //below set parameters for the selected benchmark
   //Numenta benchmark parameters set
-        double NOsize_b = 50, NOsize_e = 100, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
+        double NOsize_b = 20, NOsize_e = 100, NOsize_s = 100; //parameters for grid search (xxx_b - intial, xxx_e - ending, xxx_s - step)
         double Wsize_b = 100, Wsize_e = 600, Wsize_s = 100;
-        double NIsize_b = 10, NIsize_e = 10, NIsize_s = 20;
+        double NIsize_b = 5, NIsize_e = 10, NIsize_s = 20;
         double Beta_b = 1.0, Beta_e = 1.0, Beta_s = 0.2;
         double TS_b = 1000, TS_e = 1000, TS_s = 1000;
         double sim_b = 0.1, sim_e = 0.1, sim_s = 0.1;
@@ -126,18 +146,17 @@ int main() {
                                                      AnomalyFactor_c <= AnomalyFactor_e;
                                                      AnomalyFactor_c += AnomalyFactor_s) {
                                                   
-                                                    cout << "Start to set hyperparameters!" << endl;
-                                                    //cout << "AnomalyFactor=" << AnomalyFactor_c << endl;
+                                                    //cout << "Start to set hyperparameters!" << endl;
                                                     NOsize = NOsize_c, Wsize = Wsize_c, NIsize = NIsize_c, Beta = Beta_c,
                                                     TS = TS_c, sim = sim_c, mod = mod_c, C = C_c, ErrorFactor = ErrorFactor_c,
                                                     AnomalyFactor = AnomalyFactor_c;
                                                   
-                                                    cout << "Start to load data!" << endl;
+                                                    //cout << "Start to load data!" << endl;
                                                     //LoadData(dirPath + "/" + files[i]); //load dataset
                                                     LoadData(files[i]); //load dataset
-                                                    cout << "Start to train!" << endl;
+                                                    //cout << "Start to train!" << endl;
                                                     TraineSNN(); //train eSNN with given set of parameters
-                                                    cout << "Finish training!" << endl;
+                                                    //cout << "Finish training!" << endl;
 
                                                     CalculateConfusionMatrix(); //calculate confusion Matrix
                                                     double precision = CalculatePrecision(); //calculate statistics
@@ -152,14 +171,18 @@ int main() {
                                                         maxFMeasure = fMeasure;
                                                         maxPrecision = precision;
                                                         maxRecall = recall;
-
+                                                        
+                                                        cout << "Save the results!" << endl;
+                                                        vector<string> res1 = split(files[i], "/");
                                                         string resultsFilePath =
-                                                                resultsPath + "/" + folder + "/" + folder + "_" +
-                                                                files[i];
+                                                                resultsPath + "/" + folder + "_" +
+                                                                res1[res1.size()-1];
+                                                        cout << resultsFilePath << endl;
                                                         SaveResults(resultsFilePath);
+                                                      
                                                         string metricsFilePath =
-                                                                resultsPath + "/" + folder + "/" + "metr_" + folder +
-                                                                "_" + files[i];
+                                                                resultsPath + "/" + "metr_" + folder +
+                                                                "_" + res1[res1.size()-1];
                                                         SaveMetrics(metricsFilePath, precision,
                                                                     recall, fMeasure, 0);
 
