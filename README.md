@@ -14,9 +14,9 @@ Evolving spiking neural network in C++
 * syn w/ jupyter7788
 * To compile w/ Cmake,
 <br> mkdir build
-cd build
-cmake ..
-make
+<br> cd build
+<br> cmake ..
+<br> make
 * compile the main.cpp: g++ test_main2.cpp eSNN.cpp -o test_main2 -std=c++14
 
 ## Sources
