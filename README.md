@@ -21,7 +21,7 @@ Evolving spiking neural network in C++
 
 ## Sources
 * SNN in Pytorch [Link](https://medium.com/@martino.sorbaro/deep-learning-with-spiking-networks-optimising-energy-consumption-50588b4435fd); [Gitlab](https://gitlab.com/aiCTX/synoploss)
-* [Adapted from this github](https://github.com/piotrMaciag32/eSNN-AD)
+* [Adapted from Piotr Maciag's github](https://github.com/piotrMaciag32/eSNN-AD)
 
 ## Reference:
 * [Easy Outlier Detection in Data Streams](https://towardsdatascience.com/easy-outlier-detection-in-data-streams-3089bfefe528)
