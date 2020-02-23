@@ -1,5 +1,5 @@
 # Exploring the basic properties of eSNN in C++
-Evolving spiking neural network in C++
+Anomaly detection in time series w/ evolving spiking neural network
 
 ## My works:
 * Apply OeSNN to data stream of two consecutive bearing
