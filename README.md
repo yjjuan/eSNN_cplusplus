@@ -5,7 +5,7 @@ Anomaly detection in time series w/ evolving spiking neural network
 * Apply OeSNN to data stream of two consecutive bearing
 * Explore how different hyperparameters of SNN affect performance of SNN for anomaly detection. (in c++ jupyter notebook)
   * how many hyperparameters are there in eSNN?
-* Embed the SNN into running app: detection the drift of my velocity.
+* Embed the SNN into running app: detection the drift of my velocity. [Android sensor](https://developer.android.com/guide/topics/sensors/sensors_position)
 
 ## Milestones:
 * 20200203: I have to turn window-based ReadDirectory into Linux-based one
