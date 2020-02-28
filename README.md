@@ -10,6 +10,8 @@ Anomaly detection in time series w/ evolving spiking neural network
 ## Milestones:
 * 20200203: I have to turn window-based ReadDirectory into Linux-based one
 * 20200214: Precision 0.00438116 Recall 1 fMeasure 0.0087241. Why precision is so low?. **Have to check the predictions w/ cout**
+* 20200228: how to feed java arrayList to cpp function?
+
 ## Notes:
 * syn w/ jupyter7788
 * To compile w/ Cmake,
