@@ -24,7 +24,7 @@ Anomaly detection in time series w/ evolving spiking neural network
 
 ## Sources
 * SNN in Pytorch [Link](https://medium.com/@martino.sorbaro/deep-learning-with-spiking-networks-optimising-energy-consumption-50588b4435fd); [Gitlab](https://gitlab.com/aiCTX/synoploss)
-* [Datasets for concept drift](https://www.cs.bham.ac.uk/~minkull/open-source.html)
+* [Datasets for concept drift](https://www.cs.bham.ac.uk/~minkull/open-source.html); [documentation](https://ieeexplore.ieee.org/abstract/document/5156502)
 * [Adapted from Piotr Maciag's github](https://github.com/piotrMaciag32/eSNN-AD)
 
 ## Reference:
