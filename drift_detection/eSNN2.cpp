@@ -23,7 +23,7 @@ vector<neuron *> OutputNeurons;
 vector<inputValue> X;
 vector<double> Y;
 vector<bool> U;
-vector<bool> merge;
+vector<bool> mergeNeuron;
 vector<double> E;
 vector<GRFstruct> GRFs;
 vector<vector<inputNeuron>> spikeOrder;
@@ -312,8 +312,11 @@ void TraineSNN() { //main eSNN procedure
     }
 
 
-    for (int k = 0; k < Wsize; k++)
-        U.push_back(false);
+    for (int k = 0; k < Wsize; k++) {
+      U.push_back(false);
+      mergeNeuron.push_back(false);
+    }
+        
 
     //cout << "Enter the last for-loop" << endl;
     for (int t = Wsize; t < X.size(); t++) {
@@ -347,13 +350,16 @@ void TraineSNN() { //main eSNN procedure
         if (CNOsize > 0 && CalculateDistance(n_i->s_weights, n_s->s_weights) <= sim*Dmax) {
             //cout << "Block1" << endl;
             UpdateNeuron(n_i, n_s);
+            mergeNeuron.push_back(true);
         } else if (CNOsize < NOsize) {
         //} else if (t > Wsize && CNOsize < NOsize) {
             //cout << "Block2" << endl;
             OutputNeurons.push_back(n_i);
             CNOsize++;
+            mergeNeuron.push_back(false);
         } else {
             ReplaceOldest(n_i);
+            mergeNeuron.push_back(false);
         }
         //cout << "Finish first part of training" << endl;
 
@@ -386,11 +392,11 @@ void SaveResults(string filePath) {
     fstream handler;
     handler.open(filePath, iostream::out);
 
-    handler << "timestamp,value,predicted_value,error,p_label,fired,r_label" << endl;
+    handler << "timestamp,value,predicted_value,error,p_label,fired,r_label,merge" << endl;
     for (int t = 0; t < X.size(); t++) {
         handler << setprecision(12) << X[t].timeStamp << "," << X[t].value << "," << Y[t] << "," << E[t] << "," << U[t]
-                << ",";
-        handler << NeuronFired[t] << "," << X[t].r_label;
+                << "," ;
+        handler << NeuronFired[t] << "," << X[t].r_label<< "," << mergeNeuron[t] << ",";
         handler << endl;
     }
     handler.close();

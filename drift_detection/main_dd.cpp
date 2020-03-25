@@ -175,7 +175,7 @@ int main() {
                                                         cout << "Save the results!" << endl;
                                                         vector<string> res1 = split(files[i], "/");
                                                         string resultsFilePath =
-                                                                resultsPath + "/" + folder + "_" +
+                                                                resultsPath + "/" + "withMerge_" + folder + "_" +
                                                                 res1[res1.size()-1];
                                                         cout << resultsFilePath << endl;
                                                         SaveResults(resultsFilePath);
