@@ -31,3 +31,6 @@ Anomaly detection in time series w/ evolving spiking neural network
 * [Easy Outlier Detection in Data Streams](https://towardsdatascience.com/easy-outlier-detection-in-data-streams-3089bfefe528)
 * [Medium post: Detecting real-time and unsupervised anomalies in streaming data: a starting point](https://towardsdatascience.com/detecting-real-time-and-unsupervised-anomalies-in-streaming-data-a-starting-point-760a4bacbdf8)
 * [Liu, B., Qi, Y. & Chen, K.-J. Sequential online prediction in the presence of outliers and change points: an instant temporal structure learning approach.(2020)](https://arxiv.org/abs/1907.06377)
+* [Introduction to online learning @ creme](https://creme-ml.github.io/notebooks/batch-to-online.html)
+* Albert Bifet's work: [Github](https://github.com/abifet), [book](https://www.amazon.com/gp/product/0262037793/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262037793&linkCode=as2&tag=moa06-20&linkId=b5e81a3c1ba8d10f01fdabac1c422bd0);[free book](https://www.cs.waikato.ac.nz/~abifet/MOA/StreamMining.pdf)
+* [Deployment of online model](https://towardsdatascience.com/machine-learning-for-streaming-data-with-creme-dacf5fb469df)
