@@ -13,6 +13,8 @@ Anomaly detection in time series w/ evolving spiking neural network
 * 20200228: ~~how to feed java arrayList to cpp function?~~
 * 20200314: start to explore eSNN for drift detection.
 * 20200328: eSNN is not effective to locate the drift. Found a good substitute: ADWIN.
+![](/drift_detection/performance.png)
+*
 
 ## Notes:
 * syn w/ jupyter7788
