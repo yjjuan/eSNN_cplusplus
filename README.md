@@ -12,6 +12,7 @@ Anomaly detection in time series w/ evolving spiking neural network
 * 20200214: Precision 0.00438116 Recall 1 fMeasure 0.0087241. Why precision is so low?. **Have to check the predictions w/ cout**
 * 20200228: ~~how to feed java arrayList to cpp function?~~
 * 20200314: start to explore eSNN for drift detection.
+* 20200328: eSNN is not effective to locate the drift. Found a good substitute: ADWIN.
 
 ## Notes:
 * syn w/ jupyter7788
