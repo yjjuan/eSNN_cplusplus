@@ -104,7 +104,7 @@ int main() {
         double NIsize_b = 5, NIsize_e = 20, NIsize_s = 5;
         double Beta_b = 1.0, Beta_e = 1.0, Beta_s = 0.2;
         double TS_b = 1000, TS_e = 1000, TS_s = 1000;
-        double sim_b = 0.002, sim_e = 0.01, sim_s = 0.002;
+        double sim_b = 0.000, sim_e = 0.000, sim_s = 0.0002;
         double mod_b = 0.6, mod_e = 0.6, mod_s = 0.1;
         double C_b = 0.6, C_e = 0.6, C_s = 0.1;
         double ErrorFactor_b = 0.9, ErrorFactor_e = 0.9, ErrorFactor_s = 0.1;
@@ -175,7 +175,7 @@ int main() {
                                                         cout << "Save the results!" << endl;
                                                         vector<string> res1 = split(files[i], "/");
                                                         string resultsFilePath =
-                                                                resultsPath + "/" + "withMerge_" + folder + "_" +
+                                                                resultsPath + "/" + "withMerge2_" + folder + "_" +
                                                                 res1[res1.size()-1];
                                                         cout << resultsFilePath << endl;
                                                         SaveResults(resultsFilePath);

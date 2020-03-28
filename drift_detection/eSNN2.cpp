@@ -23,7 +23,7 @@ vector<neuron *> OutputNeurons;
 vector<inputValue> X;
 vector<double> Y;
 vector<bool> U;
-vector<bool> mergeNeuron;
+vector<float> mergeNeuron;
 vector<double> E;
 vector<GRFstruct> GRFs;
 vector<vector<inputNeuron>> spikeOrder;
@@ -314,13 +314,13 @@ void TraineSNN() { //main eSNN procedure
 
     for (int k = 0; k < Wsize; k++) {
       U.push_back(false);
-      mergeNeuron.push_back(false);
+      mergeNeuron.push_back(0);
     }
         
 
     //cout << "Enter the last for-loop" << endl;
     for (int t = Wsize; t < X.size(); t++) {
-    //for (int t = Wsize; t < 103; t++) {
+    //for (int t = Wsize; t < 1500; t++) {
         //cout << t << endl;
         //cout << X.size() << endl;
         Window.erase(Window.begin());
@@ -338,28 +338,40 @@ void TraineSNN() { //main eSNN procedure
           continue;
         }
         InitializeNeuron(n_i, Window);
-        //cout << "n_i after init: " << n_i->M <<endl;
 
         neuron *n_s;
         if (CNOsize > 0) {
             //cout << "First Block" << endl;
             n_s = FindMostSimilar(n_i);
-            //cout << "n_s" << n_s->M << endl;
+            /*
+            cout << "n_s" << endl;
+            for(double n : n_s->s_weights) {
+                std::cout << n << '\n';
+            }
+            cout << "n_i after init: " <<endl;
+            for(double n : n_i->s_weights) {
+                std::cout << n << '\n';
+            }
+            cout << "Distance: " << CalculateDistance(n_i->s_weights, n_s->s_weights) <<endl;
+            */
+            mergeNeuron.push_back(CalculateDistance(n_i->s_weights, n_s->s_weights));
         }
-
-        if (CNOsize > 0 && CalculateDistance(n_i->s_weights, n_s->s_weights) <= sim*Dmax) {
-            //cout << "Block1" << endl;
+        //mergeNeuron.push_back(CalculateDistance(n_i->s_weights, n_s->s_weights));
+        //if (CNOsize > 0 && CalculateDistance(n_i->s_weights, n_s->s_weights) <= sim*Dmax) {
+        if (CNOsize > 0 && CalculateDistance(n_i->s_weights, n_s->s_weights) <= 0.3) {   
+            //cout << CalculateDistance(n_i->s_weights, n_s->s_weights) << endl;
+            //mergeNeuron.push_back(CalculateDistance(n_i->s_weights, n_s->s_weights));
             UpdateNeuron(n_i, n_s);
-            mergeNeuron.push_back(true);
+            
         } else if (CNOsize < NOsize) {
         //} else if (t > Wsize && CNOsize < NOsize) {
             //cout << "Block2" << endl;
             OutputNeurons.push_back(n_i);
             CNOsize++;
-            mergeNeuron.push_back(false);
+            //mergeNeuron.push_back(CalculateDistance(n_i->s_weights, n_s->s_weights));
         } else {
             ReplaceOldest(n_i);
-            mergeNeuron.push_back(false);
+            //mergeNeuron.push_back(CalculateDistance(n_i->s_weights, n_s->s_weights));
         }
         //cout << "Finish first part of training" << endl;
 

@@ -63,6 +63,7 @@ extern vector<neuron *> OutputNeurons; //Pointers to output neurons (outputneuro
 extern vector<inputValue> X; //input dataset
 extern vector<double> Y; //predicted values of eSNN
 extern vector<bool> U; //classification of each X[t] input value
+extern vector<float> mergeNeuron;
 extern vector<double> E; //error between predicted Y[t] and X[t]
 extern vector<GRFstruct> GRFs; //input GRFs
 extern vector<vector<inputNeuron>> spikeOrder; //firing order of input neurons for current X[t]

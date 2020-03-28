@@ -23,7 +23,6 @@ vector<neuron *> OutputNeurons;
 vector<inputValue> X;
 vector<double> Y;
 vector<bool> U;
-vector<bool> merge;
 vector<double> E;
 vector<GRFstruct> GRFs;
 vector<vector<inputNeuron>> spikeOrder;
