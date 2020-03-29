@@ -37,3 +37,4 @@ Anomaly detection in time series w/ evolving spiking neural network
 * [Introduction to online learning @ creme](https://creme-ml.github.io/notebooks/batch-to-online.html)
 * Albert Bifet's work: [Github](https://github.com/abifet), [book](https://www.amazon.com/gp/product/0262037793/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262037793&linkCode=as2&tag=moa06-20&linkId=b5e81a3c1ba8d10f01fdabac1c422bd0);[free book](https://www.cs.waikato.ac.nz/~abifet/MOA/StreamMining.pdf)
 * [Deployment of online model](https://towardsdatascience.com/machine-learning-for-streaming-data-with-creme-dacf5fb469df)
+* [Stream Learning in Energy IoT Systems](https://towardsdatascience.com/stream-learning-in-energy-iot-systems-11f6ef089390)
